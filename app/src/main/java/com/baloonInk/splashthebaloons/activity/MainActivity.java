@@ -32,40 +32,19 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_exit).setOnClickListener(v -> finish());
     }
 
-        public void callEndActivity(int score) {
-            intent = new Intent(this, EndActivity.class);
-            intent.putExtra(SCORE_KEY, score);
-            startActivity(intent);
-            finish();
+    public void callEndActivity(int score) {
+        intent = new Intent(this, EndActivity.class);
+        intent.putExtra(SCORE_KEY, score);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (GameView.IS_RUNNING) {
+
+        } else {
+            super.onBackPressed();
         }
-
-        @Override
-        public void onBackPressed() {
-            if (GameView.IS_RUNNING) {
-
-            } else {
-                super.onBackPressed();
-            }
-        }
-    /*public void getAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setTitle(String.format("You have %d scores.", GameView.score));
-        builder.setItems(new String[]{"Main menu", "Exit"}, ((dialog, which) -> {
-            switch (which) {
-                case 0:
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-                    GameView.score = 0;
-                    finish();
-                    break;
-                case 1:
-                    finish();
-                    break;
-            }
-
-        }));
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0xE2FF511A));
-    }*/
+    }
 }
