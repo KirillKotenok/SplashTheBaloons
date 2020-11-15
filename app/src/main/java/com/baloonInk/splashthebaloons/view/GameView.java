@@ -30,6 +30,7 @@ import java.util.TimerTask;
 
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
+    public static boolean IS_RUNNING = false;
 
     //Screen size
     private int screenX;
@@ -78,7 +79,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         this.screenY = screenY;
         background = BitmapFactory.decodeResource(getResources(), R.drawable.sky);
         background = Bitmap.createScaledBitmap(background, screenX, screenY, false);
-
+        IS_RUNNING = true;
         yellowBalloon = new Balloon(-10, balloonYRandomize(),
                 screenX,
                 4, getYellowBalloonsList());
@@ -89,7 +90,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         redBalloonList = initBalloonList(redBalloon, redBalloonList);
         dart = new Dart(screenX / 2, screenY - getDart().getHeight() - 10, screenY - getDart().getHeight() - 10,
                 0 - getDart().getHeight(), 15, getDart());
-        mainActivity = new MainActivity();
+        mainActivity = (MainActivity) context;
         redBalloonIterator = redBalloonList.iterator();
         yellowBalloonIterator = yellowBalloonList.iterator();
         initLifes();
@@ -251,6 +252,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 life_count--;
                 if (life_count <= 0) {
                     gameThread.setRunning(false);
+                    IS_RUNNING = false;
                     mainActivity.runOnUiThread(() -> mainActivity.callEndActivity(score));
                 }
                 r.setX(-20 - r.getBalloonMap().get(0).getWidth());

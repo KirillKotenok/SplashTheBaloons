@@ -3,6 +3,7 @@ package com.baloonInk.splashthebaloons.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class EndActivity extends AppCompatActivity implements View.OnClickListen
         intent = getIntent();
         score = intent.getIntExtra(mainActivity.SCORE_KEY, 0);
         textView.setText(String.format(getString(R.string.score), score));
+        textView.setTextColor(Color.WHITE);
     }
 
 
