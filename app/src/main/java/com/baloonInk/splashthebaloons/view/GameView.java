@@ -68,7 +68,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private Timer timer;
     private GameThread gameThread;
     private boolean isTouch = false;
-    private EndActivity endActivity;
     private Handler handler;
 
     public GameView(Context context, int screenX, int screenY) {
@@ -136,7 +135,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     private int balloonYRandomize() {
         random = new Random();
-        int randomY = random.nextInt(screenY - 70) + 10;
+        int randomY = random.nextInt(screenY - screenY/3) + 1;
         return randomY;
     }
 

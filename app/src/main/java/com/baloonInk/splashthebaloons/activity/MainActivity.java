@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
         point = new Point();
         getWindowManager().getDefaultDisplay().getSize(point);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.button_start).setOnClickListener(v -> {
+        findViewById(R.id.start_btn).setOnClickListener(v -> {
             setContentView(new GameView(this, point.x, point.y));
         });
-        findViewById(R.id.button_exit).setOnClickListener(v -> finish());
+        findViewById(R.id.exit_btn).setOnClickListener(v -> finish());
     }
 
     public void callEndActivity(int score) {
@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (GameView.IS_RUNNING) {
-
+            finish();
+            System.exit(0);
         } else {
             super.onBackPressed();
         }

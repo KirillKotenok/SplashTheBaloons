@@ -26,7 +26,7 @@ public class Balloon implements Cloneable {
     }
 
     public static Balloon copy(Balloon balloon) {
-        return new Balloon(random.nextInt(100) - 100 - balloon.getX(),random.nextInt(100) - 100 , balloon.maxX,
+        return new Balloon(random.nextInt(100) - 100 - balloon.getX(),random.nextInt(400) + 1 , balloon.maxX,
                 balloon.balloon_speed, balloon.balloonMap);
     }
 }
